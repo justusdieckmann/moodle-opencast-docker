@@ -1,0 +1,15 @@
+[submodule "moodle/block_opencast"]
+	path = moodle/block_opencast
+	url = https://github.com/Opencast-Moodle/moodle-block_opencast.git
+[submodule "moodle/mod_opencast"]
+	path = moodle/mod_opencast
+	url = https://github.com/Opencast-Moodle/moodle-mod_opencast.git
+[submodule "moodle/tool_opencast"]
+	path = moodle/tool_opencast
+	url = https://github.com/Opencast-Moodle/moodle-tool_opencast.git
+[submodule "moodle/filter_opencast"]
+	path = moodle/filter_opencast
+	url = https://github.com/Opencast-Moodle/moodle-filter_opencast.git
+[submodule "moodle/repository_opencast"]
+	path = moodle/repository_opencast
+	url = https://github.com/Opencast-Moodle/moodle-repository_opencast.git
