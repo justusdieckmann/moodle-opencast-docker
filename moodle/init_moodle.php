@@ -11,13 +11,6 @@ require_once($CFG->dirroot . '/user/lib.php');
 require_once($CFG->dirroot . '/' . $CFG->admin . '/webservice/lib.php');
 require_once($CFG->dirroot . '/webservice/lib.php');
 
-cli_writeln('Change CFG wwwroot');
-$lines = file(__DIR__ . '/../../config.php');
-array_splice($lines, count($lines) - 5, 0, '$CFG->wwwroot = "http://" . $_SERVER["HTTP_HOST"] . ":" . getenv("MOODLE_DOCKER_WEB_PORT");');
-
-$file_content = implode(PHP_EOL, $lines);
-file_put_contents(__DIR__ . '/../../config.php', $file_content);
-
 cli_writeln('Configure curl settings');
 set_config('curlsecurityblockedhosts', '169.254.169.254');
 set_config('curlsecurityallowedport', "443\n80\n8080");
