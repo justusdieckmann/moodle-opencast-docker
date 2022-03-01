@@ -1,5 +1,6 @@
 # moodle-opencast-docker
 This repository contains a docker setup for the development of the Moodle-Opencast plugins.
+**Don't use this for production!**
 
 ## Quickstart
 Start all containers with:
