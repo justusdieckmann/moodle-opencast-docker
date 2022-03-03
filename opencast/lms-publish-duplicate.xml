@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definition xmlns="http://workflow.opencastproject.org">
+    <id>lms-publish-duplicate</id>
+    <title>Publish a duplicate of an LMS upload</title>
+
+    <operations>
+
+        <!-- Apply the default workflow configuration -->
+
+        <operation
+                id="defaults"
+                description="Applying default configuration values">
+            <configurations>
+                <configuration key="straightToPublishing">true</configuration>
+                <configuration key="flagForCutting">false</configuration>
+                <configuration key="flagForReview">false</configuration>
+                <configuration key="flagQuality360p">false</configuration>
+                <configuration key="flagQuality480p">false</configuration>
+                <configuration key="flagQuality720p">true</configuration>
+                <configuration key="flagQuality1080p">false</configuration>
+                <configuration key="flagQuality2160p">false</configuration>
+                <configuration key="publishToEngage">true</configuration>
+                <configuration key="publishToApi">true</configuration>
+                <configuration key="publishToOaiPmh">true</configuration>
+                <configuration key="publishToYouTube">false</configuration>
+                <configuration key="publishToAws">false</configuration>
+                <configuration key="uploadedSearchPreview">false</configuration>
+                <configuration key="publishLive">false</configuration>
+                <configuration key="thumbnailType">0</configuration>
+                <configuration key="thumbnailPosition">1</configuration>
+            </configurations>
+        </operation>
+
+
+        <!-- Apply series -->
+
+        <operation
+                id="series"
+                exception-handler-workflow="partial-error"
+                description="Apply series metadata and acl">
+            <configurations>
+                <configuration key="series">${seriesID}</configuration>
+                <configuration key="attach">*/*</configuration>
+                <configuration key="apply-acl">true</configuration>
+                <configuration key="copy-metadata">isPartOf</configuration>
+            </configurations>
+        </operation>
+
+        <operation
+                id="tag"
+                description="Tagging metadata catalogs for publication">
+            <configurations>
+                <configuration key="source-flavors">dublincore/*,security/*</configuration>
+                <configuration key="target-tags">+engage-download,+archive</configuration>
+            </configurations>
+        </operation>
+
+        <!-- Archive -->
+
+        <operation
+                id="snapshot"
+                description="Archive updated duplicate">
+            <configurations>
+                <configuration key="source-tags">archive</configuration>
+            </configurations>
+        </operation>
+
+        <!-- Encode and publish -->
+
+        <operation
+                id="include"
+                description="Publish the recording">
+            <configurations>
+                <configuration key="workflow-id">partial-publish</configuration>
+            </configurations>
+        </operation>
+
+        <!-- Archive after publish -->
+
+        <operation
+                id="snapshot"
+                description="Archive publish information">
+            <configurations>
+                <configuration key="source-tags">archive</configuration>
+            </configurations>
+        </operation>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <!-- Cleanup                                                           -->
+        <!--                                                                   -->
+        <!-- Remove work artifacts.                                            -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+        <!-- Clean the system from work artifacts -->
+
+        <operation
+                id="cleanup"
+                fail-on-error="false"
+                description="Remove temporary processing artifacts">
+            <configurations>
+                <configuration key="preserve-flavors">security/*</configuration>
+                <configuration key="delete-external">true</configuration>
+            </configurations>
+        </operation>
+
+    </operations>
+</definition>

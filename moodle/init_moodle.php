@@ -30,6 +30,7 @@ set_config('connecttimeout', 1, 'tool_opencast');
 
 cli_writeln('Configure settings for block_opencast');
 set_config('uploadworkflow_1', 'schedule-and-upload', 'block_opencast');
+set_config('workflow_roles_1', 'republish-metadata', 'block_opencast');
 set_config('enable_opencast_studio_link_1', 1, 'block_opencast');
 set_config('opencast_studio_baseurl_1', 'http://localhost:8080', 'block_opencast');
 set_config('lticonsumerkey_1', 'CONSUMERKEY', 'block_opencast');
