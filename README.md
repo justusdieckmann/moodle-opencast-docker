@@ -3,6 +3,8 @@ This repository contains a docker setup for the development of the Moodle-Openca
 **Don't use this for production!**
 
 ## Quickstart
+Since this repository uses Git submodules for the Moodle plugins, don't use the .zip version from GitHub but clone it using Git. Git integrates the submodules automatically.
+
 Start all containers with:
 ```
 # Start containers
