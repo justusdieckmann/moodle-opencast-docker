@@ -23,10 +23,10 @@ set_config('debugpageinfo', 1);
 cli_writeln('Configure settings for tool_opencast');
 set_config('ocinstances', '[{"id": 1, "name":"Default",  "isvisible": 1, "isdefault": 1}]',
     'tool_opencast');
-set_config('apiurl', 'http://opencast:8080', 'tool_opencast');
-set_config('apiusername', 'moodle', 'tool_opencast');
-set_config('apipassword', 'moodle', 'tool_opencast');
-set_config('connecttimeout', 1, 'tool_opencast');
+set_config('apiurl_1', 'http://opencast:8080', 'tool_opencast');
+set_config('apiusername_1', 'moodle', 'tool_opencast');
+set_config('apipassword_1', 'moodle', 'tool_opencast');
+set_config('connecttimeout_1', 1, 'tool_opencast');
 
 cli_writeln('Configure settings for block_opencast');
 set_config('uploadworkflow_1', 'schedule-and-upload', 'block_opencast');
