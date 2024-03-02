@@ -1,4 +1,4 @@
-FROM quay.io/opencast/allinone:11.3
+FROM quay.io/opencast/allinone:13.12
 
 # Setup LTI for moodle
 COPY ./mh_default_org.xml /opencast/etc/security/mh_default_org.xml

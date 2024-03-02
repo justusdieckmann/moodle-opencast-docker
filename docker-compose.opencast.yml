@@ -59,6 +59,11 @@ services:
       JAVA_DEBUG_OPTS: '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005'
     ports:
       - "5005:5005"
-      - "8080:8080"
+      - "8080"
     volumes:
       - data:/data
+  corsproxy:
+    container_name: corsproxy
+    build: corsproxy
+    ports:
+      - "8080:8080"
